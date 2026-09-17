@@ -90,13 +90,19 @@ class SparkClient
         return $this->accounts($this->withUserTypeFilter($params, 'Member'));
     }
 
-    /** @param  array<string, mixed>  $params */
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array{results: array<int, array<string, mixed>>, pagination: ?array<string, mixed>, requestId: ?string}
+     */
     public function offices(array $params = []): array
     {
         return $this->accounts($this->withUserTypeFilter($params, 'Office'));
     }
 
-    /** @param  array<string, mixed>  $params */
+    /**
+     * @param  array<string, mixed>  $params
+     * @return array<string, mixed>
+     */
     protected function withUserTypeFilter(array $params, string $userType): array
     {
         $existing = $params['filter'] ?? null;
